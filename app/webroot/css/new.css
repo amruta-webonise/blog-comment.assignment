@@ -1,0 +1,24 @@
+.jumbotron:after {
+    background: url("../img/blogging.jpg") repeat scroll center center transparent;
+    bottom: 0;
+    content: "";
+    display: block;
+    left: 0;
+    opacity:0.3;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.subhead {
+    border-bottom: 1px solid #DDDDDD;
+    text-align: left;
+}
+.jumbotron {
+    background: -moz-linear-gradient(60deg, #020031 0%, #6D3353 100%) repeat scroll 0 0 transparent;
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.2) inset, 0 -3px 7px rgba(0, 0, 0, 0.2) inset;
+    color: #FFFFFF;
+    padding: 100px 0;
+    position: relative;
+    text-align: center;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4), 0 0 30px rgba(0, 0, 0, 0.075);
+}

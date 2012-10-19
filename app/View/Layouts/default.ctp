@@ -16,7 +16,7 @@
  * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
 
-$cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework');
+$cakeDescription = __d('cake_dev', 'Blog');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,9 +45,10 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
     echo $this->Html->css('bootstrap-responsive');
     echo $this->Html->css('docs');
     echo $this->Html->css('prettify');
+    echo $this->Html->css('new');
     ?>
     <?php echo $this->Html->charset();
-    echo $this->Html->script(array('jquery-1.8.2.min','jquery-ui'));
+    echo $this->Html->script(array('jquery-1.8.2.min','jquery-ui','ckeditor/ckeditor'));
 
     ?>
     <!-- icons -->
@@ -67,7 +68,7 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 <body data-spy="scroll" data-target=".subnav" data-offset="50">
 <div id="container">
     <!-- Navbar ============================================= -->
-    <div class="navbar navbar-fixed-top">
+    <div class="navbar navbar-static-top">
         <div class="navbar-inner">
             <div class="container">
                 <a class="btn btn-navbar" data-toggle="collapse"
@@ -85,11 +86,60 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 
                     </ul>
                 </div>
+                <div class="pull-right inline">
+<?php  if(empty($userId))
+{
+    echo $this->Form->create('User',array('controller'=>'users','action'=>'login')); ?>
+    <table cellspacing="0" class="color-white">
+        <tbody>
+        <tr>
+            <td>
+                <?php echo $this->Form->input('username', array('class' => "html7magic"));?>
+            </td>
+            <td>
+                <?php echo $this->Form->input('password', array('class' => "html7magic")); ?>
+            </td>
+            <td>
+                <?php
+                echo $this->Form->input('Sign in', array('type'=>'submit','class' => 'btn btn-pink-login','label'=>false));
+                echo $this->Form->end(); ?>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <?php }
+                     else {
+                         ?>
+                        <table cellspacing="0">
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <?php $user = ucfirst($userName); ?>
+                                    Hello, <?php echo "$user"; ?>
+                                </td>
+                                <td>
+                                    <?php echo $this->Html->link(' | See Posts', array('controller'=>'posts','action' => 'adminIndex'));?>
+                                </td>
+                                <td>
+                                    <?php echo $this->Html->link(' | See Comments', array('controller'=>'comments','action' => 'index'));?>
+                                </td>
+                                <td>
+                                    <?php echo $this->Html->link(' | Add post', array('controller'=>'posts','action' => 'add'));?>
+                                </td>
+                                <td>
+                                    <?php echo $this->Html->link(' | Logout', array('controller'=>'users','action' => 'logout'));?>
+                                </td>
+
+                            </tr>
+                            </tbody>
+                            </table>
+                            <?php } ?>
+                </div>
             </div>
         </div>
     </div>
     <div id="row">
-        <?php echo $this->Session->flash(); ?>
+        <?php   echo $this->Session->flash('flash', array('element' => 'error')); ?>
         <?php echo $content_for_layout; ?>
     </div>
 </div>

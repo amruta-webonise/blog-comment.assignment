@@ -12,8 +12,14 @@ public $scaffold = 'admin';
 
 	public function index() 
 	{
+
 	        $this->set('posts', $this->Post->find('all'));
 	}
+
+    public function adminIndex()
+    {
+        $this->set('posts', $this->Post->find('all'));
+    }
 
 	public function view($id) 
 	{
@@ -99,18 +105,20 @@ public function delete($id) {
 
     public function __sendRegistrationEmail()
     {
+        //        pr($this->request->data);die;
 
         if ($this->request->is('post') && !empty($this->request->data)) {
-            $data['from'] = $this->request->data['Comment']['email'];
-            $data['fromName'] = $this->request->data['Comment']['name'];
-            $data['to'] = 'amruta@yopmail.com';
-            $data['toName'] = 'Admin';
+            $data['from'] = 'notification@yopmail.com';
+            $data['fromName'] = 'BlogWorld';
+            $data['to'] = 'tajane.amu@yopmail.com';
+            $data['toName'] = 'amruta';
             $data['template'] = 'verify_email'; // this the ctp which goes into your View/Emails/html/verify_email.ctp
             $data['subject'] = 'Welcome to BlogWorld!';
             $this->sendSmtpMail($data);
         }
         return true;
     }
+
 
 }
 

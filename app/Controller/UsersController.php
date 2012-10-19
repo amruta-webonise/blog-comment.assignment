@@ -109,5 +109,10 @@ class UsersController extends AppController
             $this->redirect(array('action'=>'login'));
         }
     }
+
+    public function dashboard()
+    {
+
+    }
 }
 ?>

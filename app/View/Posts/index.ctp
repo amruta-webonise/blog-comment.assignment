@@ -1,34 +1,47 @@
-<?php     echo '<br/>';?><?php     echo '<br/>';?><?php     echo '<br/>';?>
-<p><?php echo $this->Html->link('Logout', array('controller'=>'users','action' => 'logout')); ?></p>
+
+
+<div class="container-fluid">
 <div class="row-fluid">
-    <div class="span10 offset2">
+
+    <div class="span7 offset5">
 <h1>Blog posts</h1>
-<p><?php echo $this->Html->link('Add Post', array('controller'=>'users','action' => 'check')); ?></p>
-<table class="table table-bordered">
-    <tr>
-        <th>Id</th>
-        <th>Title</th>
-        <th>Actions</th>
-    </tr>
+</div>
+    <div class="span5 offset2">
+
+
+
 <?php //pr($posts); ?>
     <?php foreach ($posts as $post): ?>
-    <tr>
-        <td><?php echo $post['Post']['id']; ?></td>
-        <td>
-            <?php echo $this->Html->link($post['Post']['title'], array('action' => 'view', $post['Post']['id'])); ?>
-        </td>
-    <td>
-            <?php echo $this->Form->postLink(
-                'Delete',
-                array('action' => 'delete', $post['Post']['id']),
-                array('confirm' => 'Are you sure?'));
-            ?>
-            <?php echo $this->Html->link('Edit', array('action' => 'edit', $post['Post']['id'])); ?>
-        </td>
+<div>
+           <h1> <?php echo $post['Post']['title']; ?></h1></div>
+    <?php $words = explode(" ", $post['Post']['post']); ?>
+<!--        --><?php //$words = str_split($post['Post']['post'],5); ?>
+       <div>     <?php $count =0;
+           while(($words) && ($count<20))
+           { echo $words[$count].' '; $count++;}
+           echo '...'.$this->Html->link('Read More', array('action' => 'view', $post['Post']['id'])); ?>
+       </div>
+        <div>
+            <small><i><?php echo '<br/>'; echo 'Created by- Admin';
+                ?></i></small>
+        </div>
+           <div>
+               <small><?php echo 'Created '.$post['Post']['created'];
+                   ?></small>
+           </div>
+<hr>
 
-    </tr>
+
     <?php endforeach; ?>
 
-</table>
 </div>
     </div>
+
+    </div>
+            <div class="row-fluid">
+                <div class="span7 offset5">
+                    <footer>
+                        <p>© Company 2012</p>
+                    </footer>
+                </div>
+            </div>

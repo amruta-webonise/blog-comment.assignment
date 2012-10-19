@@ -35,28 +35,28 @@ class AppController extends Controller {
     public $helpers = array(
         "Html",
         "Form",
+        'Fck',
+        'Js',
         "TB" => array(
             "className" => "TwitterBootstrap.TwitterBootstrap"
         )
     );
     public $components = array( 'Session',
-    'Auth' => array( 'loginRedirect' => array('controller' => 'posts' , 'action' => 'add'),
+    'Auth' => array( 'loginRedirect' => array('controller' => 'users' , 'action' => 'dashboard'),
     'logoutRedirect' => array('controller' => 'posts', 'action' => 'index'),
         'authorize' => array('Controller')
     ),
-        'SwiftMailer'
+     'SwiftMailer'
     );
 
     public function isAuthorized($user) {
-        // Admin can access every action
+
         if (isset($user['role_type']) && $user['role_type'] === '1') {
             return true;
         }
 
-        // Default deny
         return false;
     }
-
     public function sendSmtpMail($data = array()) {
 
         $this->SwiftMailer->from = $data['from'];
@@ -77,5 +77,31 @@ class AppController extends Controller {
         } else {
             return true;
         }
+    }
+
+    public function beforeRender()
+    {
+        parent::beforeRender();
+        $userId=$this->userLoggedIn();
+        $userName=$this->userLoggedName();
+        $this->set(compact('userId','userName'));
+    }
+
+    public function userLoggedIn()
+    {
+        $userId= $this->Auth->user('id');
+        if(!empty($userId))
+            return $userId;
+        else
+            return false;
+    }
+
+    public function userLoggedName()
+    {
+        $userName= $this->Auth->user('username');
+        if(!empty($userName))
+            return $userName;
+        else
+            return false;
     }
 }
