@@ -1,3 +1,9 @@
+<script src="/js/bootstrap-dropdown.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+    $('.dropdown-toggle').dropdown()
+</script>
+
 <div class="container-fluid">
     <div class="row-fluid">
 
@@ -6,8 +12,7 @@
         </div>
         <div class="span10 offset2">
             <div class="span2">
-                <p><?php echo $this->Html->link('Add Post', array('controller'=>'posts','action' => 'add'));echo '<br/>';
-                    echo $this->Html->link('See all comments',array('controller'=>'comments','action' => 'index')); ?></p></div>
+                <p><?php echo $this->Html->link('Add Post', array('controller'=>'posts','action' => 'add'));echo '<br/>';?></p></div>
 
             <div class="span8">
 

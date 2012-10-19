@@ -18,8 +18,10 @@
 
 $cakeDescription = __d('cake_dev', 'Blog');
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <?php echo $this->Html->charset(); ?>
     <title><?php echo $title_for_layout; ?></title>
@@ -48,7 +50,7 @@ $cakeDescription = __d('cake_dev', 'Blog');
     echo $this->Html->css('new');
     ?>
     <?php echo $this->Html->charset();
-    echo $this->Html->script(array('jquery-1.8.2.min','jquery-ui','ckeditor/ckeditor'));
+    echo $this->Html->script(array('jquery-1.8.2.min','jquery-ui','ckeditor/ckeditor','bootstrap-download.js'));
 
     ?>
     <!-- icons -->
@@ -117,17 +119,17 @@ $cakeDescription = __d('cake_dev', 'Blog');
                                     <?php $user = ucfirst($userName); ?>
                                     Hello, <?php echo "$user"; ?>
                                 </td>
+
                                 <td>
-                                    <?php echo $this->Html->link(' | See Posts', array('controller'=>'posts','action' => 'adminIndex'));?>
-                                </td>
-                                <td>
-                                    <?php echo $this->Html->link(' | See Comments', array('controller'=>'comments','action' => 'index'));?>
-                                </td>
-                                <td>
-                                    <?php echo $this->Html->link(' | Add post', array('controller'=>'posts','action' => 'add'));?>
-                                </td>
-                                <td>
-                                    <?php echo $this->Html->link(' | Logout', array('controller'=>'users','action' => 'logout'));?>
+                                <li class="dropdown">
+                                    <a data-toggle="dropdown" class="dropdown-toggle"> | Actions <b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="http://users.webonise.com/posts/adminIndex">See Posts</a></li>
+                                        <li><a href="http://users.webonise.com/comments">See Comments</a></li>
+                                        <li><a href="http://users.webonise.com/posts/add">Add post</a></li>
+                                        <li><a href="http://users.webonise.com/users/logout">Logout</a></li>
+                                    </ul>
+                                </li>
                                 </td>
 
                             </tr>

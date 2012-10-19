@@ -14,6 +14,12 @@
     });
 </script>
 
+<script src="/js/bootstrap-dropdown.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+    $('.dropdown-toggle').dropdown()
+</script>
+
 <script type="text/javascript" src="/ckeditor/ckeditor.js"></script>
 <div class="row-fluid">
     <div class="span10 offset2">

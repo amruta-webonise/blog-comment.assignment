@@ -1,3 +1,9 @@
+<script src="/js/bootstrap-dropdown.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+    $('.dropdown-toggle').dropdown()
+</script>
+
 <div class="container-fluid">
 <div class="row-fluid">
 

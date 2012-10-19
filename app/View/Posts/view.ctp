@@ -19,11 +19,17 @@
     });
 </script>
 
+<script src="/js/bootstrap-dropdown.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+    $('.dropdown-toggle').dropdown()
+</script>
+
 <div class="row-fluid">
 
     <div class="span6 offset2">
 
-<h1>TITLE: <?php echo h($post['Post']['title']); ?></h1>
+<h1><?php echo h($post['Post']['title']); ?></h1>
 <?php     echo '<br/>';?>
         <div>
 <!--        --><?php //echo htmlspecialchars(($post['Post']['post'])); ?>
